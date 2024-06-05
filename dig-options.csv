@@ -1,0 +1,88 @@
+﻿大分類,小分類,コマンドラインオプション,効果,デフォルト値
+トランスポート等,L3 / L4,-4,IPv4 のみ,-
+トランスポート等,L3 / L4,-6,IPv6 のみ,-
+トランスポート等,L3 / L4,@SERVER,宛先サーバーを指定,/etc/resolv.conf の指定
+トランスポート等,L3 / L4,-p PORT,宛先ポートを指定,53 (プロトコルにより 80、443、853)
+トランスポート等,L3 / L4,-b ADDRESS[#PORT],送信元アドレス (ポート) を指定,-
+トランスポート等,L3 / L4,"+[no]tcp, +[no]vc",TCP を使用,no (IXFR / ANY は yes、AXFR は常に TCP)
+トランスポート等,L3 / L4,+[no]keepopen,複数のクエリーを同一 TCP ソケット内で行う,no
+トランスポート等,DNS-over-HTTPS (DoH) / DNS-over-TLS (DoT),+[no]https(-post)[=PATH],DoH - HTTPS POST,no (パスは /dns-query)
+トランスポート等,DNS-over-HTTPS (DoH) / DNS-over-TLS (DoT),+[no]https-get[=PATH],DoH - HTTPS GET,no (パスは /dns-query)
+トランスポート等,DNS-over-HTTPS (DoH) / DNS-over-TLS (DoT),+[no]http-plain(-post)[=PATH],DoH - 平文 HTTP POST,no (パスは /dns-query)
+トランスポート等,DNS-over-HTTPS (DoH) / DNS-over-TLS (DoT),+[no]http-plain-get[=PATH],DoH - 平文 HTTP GET,no (パスは /dns-query)
+トランスポート等,DNS-over-HTTPS (DoH) / DNS-over-TLS (DoT),+[no]tls,DoT,no
+トランスポート等,DNS-over-HTTPS (DoH) / DNS-over-TLS (DoT),+[no]tls-ca[=FILE_NAME],指定した証明書の認証局を信頼,no (グローバル証明書ストア)
+トランスポート等,DNS-over-HTTPS (DoH) / DNS-over-TLS (DoT),+[no]tls-hostname=HOSTNAME,証明書を検証する際に用いるサーバ名,@ で指定したサーバー名
+トランスポート等,DNS-over-HTTPS (DoH) / DNS-over-TLS (DoT),+[no]tls-certfile=FILE_NAME,クライアント証明書ファイルを指定,no 
+トランスポート等,DNS-over-HTTPS (DoH) / DNS-over-TLS (DoT),+[no]tls-keyfile=FILE_NAME,クライアント証明書の秘密鍵ファイルを指定,no 
+トランスポート等,再試行等,+tries=VALUE,試行回数を指定,3
+トランスポート等,再試行等,+retry=VALUE,再試行回数を指定,2
+トランスポート等,再試行等,+timeout=VALUE,タイムアウト秒数を指定,5
+トランスポート等,再試行等,+[no]ignore,TC フラグ受信時 TCP で再試行しない,no (TCP で再試行する)
+トランスポート等,再試行等,+[no]fail,SERVFAIL 受信時に次のサーバーに再試行,no
+トランスポート等,再試行等,+[no]ednsnegotiation,EDNS バージョンネゴシエーションを行う,yes
+トランスポート等,再試行等,+[no]badcookie,BADCOOKIE 受信時に新しいサーバークッキーで再試行,yes
+クエリーの内容,一般,+qid=VALUE,クエリー ID (0-65535) を指定,指定しない (ランダム)
+クエリーの内容,一般,+[no]opcode=VALUE,OPCODE を名前または数字 (0-15) で指定,0 (QUERY)
+クエリーの内容,一般,"+[no]aaflag, +[no]aaonly",AA フラグ,no
+クエリーの内容,一般,+[no]tcflag,TC フラグ,no
+クエリーの内容,一般,"+[no]rdflag, +[no]recurse",RD フラグ,yes
+クエリーの内容,一般,+[no]raflag,RA フラグ,no
+クエリーの内容,一般,+[no]zflag,Z フラグ,no
+クエリーの内容,一般,+[no]adflag,AD フラグ,yes
+クエリーの内容,一般,+[no]cdflag,CD フラグ,no
+クエリーの内容,一般,+[no]header-only,QUESTION セクションのない、ヘッダーのみのクエリー,no
+クエリーの内容,一般,-q NAME / -t TYPE / -c CLASS,QNAME / QTYPE / QCLASS を指定,TYPE: A / CLASS: IN
+クエリーの内容,TSIG,-k FILE_NAME,TSIG キーをファイルから読みこむ,-
+クエリーの内容,TSIG,-y [HMAC:]KEYNAME:SECRET,TSIG キーを指定,-
+クエリーの内容,TSIG,+[no]fuzztime[=VALUE],TSIG 署名のタイムスタンプを指定,no (現在時刻) VALUE 省略時 1646972129
+クエリーの内容,EDNS (基本),+bufsize[=VALUE],UDP メッセージファイルサイズを指定,1232
+クエリーの内容,EDNS (基本),+[no]edns[=VALUE],指定したバージョンの EDNS を用いる (no で EDNS を用いない),0
+クエリーの内容,EDNS (基本),"+[no]do, +[no]dnssec",DO フラグ,no
+クエリーの内容,EDNS (基本),+[no]ednsflags[=VALUE],EDNS の Z フラグを 10 進、16 進、または 8 進の数字 (0-0x7fff) で指定,0
+クエリーの内容,EDNS オプション,+[no]nsid,Name Server Identifier (NSID),no
+クエリーの内容,EDNS オプション,+[no]subnet=ADDR[/PREFIX-LEN],EDNS Client Subnet (ECS) を指定,no (prefix は IPv4 では 32、IPv6 では 128)
+クエリーの内容,EDNS オプション,+[no]expire,EDNS Expire,no
+クエリーの内容,EDNS オプション,+[no]cookie[=VALUE],DNS Cookie (クッキーの値を指定),yes
+クエリーの内容,EDNS オプション,+[no]keepalive,EDNS Keepalive,no
+クエリーの内容,EDNS オプション,+padding=VALUE,バイト数で指定したブロックサイズにパディング,no
+クエリーの内容,EDNS オプション,+[no]ednsopt[=CODE[:VALUE]],指定したコードとペイロードによる EDNS オプションを付与,-
+クエリーの内容,特殊な指定,-f FILE_NAME,ファイルからリストを読み込みバッチモードで動作,-
+クエリーの内容,特殊な指定,+domain=NAME,指定したドメインをサーチリストとしてサーチ,-
+クエリーの内容,特殊な指定,"+[no]search, +[no]defname",/etc/resolv.conf のリストを利用してサーチ,no
+クエリーの内容,特殊な指定,+ndots=VALUE,指定された数以上ドットがあれば絶対ドメインとして扱いサーチしない,/etc/resolv.conf で指定されなければ 1
+クエリーの内容,特殊な指定,-x addr,指定された IPv4 / IPv6 アドレスを逆引き,-
+表示,部分の選択,+[no]all,全てのセクションを表示 (no で全て非表示),-
+表示,部分の選択,+[no]cmd,先頭のバージョン等のコメント部分を表示,yes
+表示,部分の選択,+[no]comments,ヘッダー情報や EDNS などを含むコメント部分を表示,yes
+表示,部分の選択,+[no]question,QUESTION セクションを表示,yes
+表示,部分の選択,+[no]answer,ANSWER セクションを表示,yes
+表示,部分の選択,+[no]authority,AUTHORITY セクションを表示,yes
+表示,部分の選択,+[no]additional,ADDITIONAL セクションを表示,yes
+表示,部分の選択,+[no]stats,末尾の統計情報を表示,yes
+表示,その他オン・オフ,+[no]qr,送信されたクエリーメッセージを表示,no
+表示,その他オン・オフ,+[no]showsearch,サーチ時に途中の結果も表示,no
+表示,その他オン・オフ,+[no]showbadcookie,BADCOOKIE 受信時再試行する前にそのメッセージを表示,no
+表示,その他オン・オフ,+[no]ttlid,TTL を表示,yes
+表示,その他オン・オフ,+[no]class,CLASS を表示,yes
+表示,その他オン・オフ,+[no]crypto,DNSSEC 関連の暗号によるフィールドを表示,yes (no で省略)
+表示,その他オン・オフ,+[no]rrcomments,DNSKEY の表示に分かりやすいコメントを入れる,no (+multiline では yes)
+表示,その他オン・オフ,+[no]onesoa,AXFR の結果の SOA をひとつだけ表示,no (先頭と末尾の SOA を表示)
+表示,その他オン・オフ,+[no]besteffort,正しいフォーマットではないレスポンスもできるだけ表示,yes
+表示,フォーマットの選択,-u,クエリー時間をマイクロ秒で表示,ミリ秒で表示
+表示,フォーマットの選択,+[no]ttlunits,TTL を時間や分など人にやさしい単位で表示,no (秒で表示)
+表示,フォーマットの選択,+[no]expandaaaa,AAAA レコードを省略記法を用いない 39 文字で表示,no (省略記法)
+表示,フォーマットの選択,+[no]unknownformat,全ての RDATA を未知の RRTYPE 向けのフォーマットで表示,no
+表示,フォーマットの選択,+[no]multiline,SOA レコード等を人に分かりやすい複数行で表示,no
+表示,フォーマットの選択,+[no]split=VALUE,レコードの値を 16 進表示する際、指定した文字数 (4 の倍数) で区切る,56 (+multiline では 44)
+表示,全体,+[no]short,簡潔な表示,no
+表示,全体,+[no]identify,+short オプション利用時に IP アドレスを表示,no
+表示,全体,+[no]yaml,YAML 形式で表示,no
+その他,IDN,+[no]idnin / +[no]idnout,国際化ドメイン名 (IDN) を入力 / 出力に使う,TTY 入出力時は yes、その他は no
+その他,特殊,+[no]nssearch,ゾーンの全ての権威ネームサーバーの持つ SOA を表示,no
+その他,特殊,+[no]trace,ルートから反復クエリーを行なう,no
+その他,特殊,+[no]dns64prefix,ipv4only.arpa AAAA をクエリーした結果得られるプレフィクスを表示,no
+その他,その他,-v,バージョンを表示,-
+その他,その他,-h,使い方を表示,-
+その他,その他,-r,.digrcファイルを読み込まない ,-
+その他,その他,-m,メモリデバッグ,-
