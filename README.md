@@ -1,5 +1,5 @@
 # dig-options
-dig のコマンドラインオプションを整理したシートを作ってみました。
+dig のコマンドラインオプションを整理したシートを作ってみました (BIND9.18 の dig をもとにしています)
 - A4 [PDF](https://github.com/y01m/dig-options/blob/main/dig-options-a4.pdf)
 - データ [CSV](https://github.com/y01m/dig-options/blob/main/dig-options.csv)
 
