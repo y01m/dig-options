@@ -43,7 +43,7 @@
 クエリーの内容,EDNS オプション,+[no]nsid,Name Server Identifier (NSID),no
 クエリーの内容,EDNS オプション,+[no]subnet=ADDR[/PREFIX-LEN],EDNS Client Subnet (ECS) を指定,no (prefix は IPv4 では 32、IPv6 では 128)
 クエリーの内容,EDNS オプション,+[no]expire,EDNS Expire,no
-クエリーの内容,EDNS オプション,+[no]cookie[=VALUE],DNS Cookie (クッキーの値を指定),yes
+クエリーの内容,EDNS オプション,+[no]cookie[=VALUE],DNS Cookie (クッキーの値を指定),yes VALUE 省略時ランダム
 クエリーの内容,EDNS オプション,+[no]keepalive,EDNS Keepalive,no
 クエリーの内容,EDNS オプション,+padding=VALUE,バイト数で指定したブロックサイズにパディング,no
 クエリーの内容,EDNS オプション,+[no]ednsopt[=CODE[:VALUE]],指定したコードとペイロードによる EDNS オプションを付与,-
@@ -76,7 +76,7 @@
 表示,フォーマットの選択,+[no]multiline,SOA レコード等を人に分かりやすい複数行で表示,no
 表示,フォーマットの選択,+[no]split=VALUE,レコードの値を 16 進表示する際、指定した文字数 (4 の倍数) で区切る,56 (+multiline では 44)
 表示,全体,+[no]short,簡潔な表示,no
-表示,全体,+[no]identify,+short オプション利用時に IP アドレスを表示,no
+表示,全体,+[no]identify,+short オプション利用時にサーバーの IP アドレスを表示,no
 表示,全体,+[no]yaml,YAML 形式で表示,no
 その他,IDN,+[no]idnin / +[no]idnout,国際化ドメイン名 (IDN) を入力 / 出力に使う,TTY 入出力時は yes、その他は no
 その他,特殊,+[no]nssearch,ゾーンの全ての権威ネームサーバーの持つ SOA を表示,no
